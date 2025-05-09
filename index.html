@@ -6,23 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plataforma Viva</title>
     <link rel="manifest" href="manifest_PlataformaViva.json">
-    <link rel="icon" type="image/x-icon" href="Icono_PlataformaViva.ico">
-    <meta name="theme-color" content="#3B82F6">
+    <link rel="icon" href="Icono_PlataformaViva.ico" type="image/x-icon">
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <h1>Plataforma Viva</h1>
-    <p>Ella no responde. Ella recuerda.</p>
-<!-- Trigger redeploy -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw_PlataformaViva.js')
-      .then(function(registration) {
-        console.log('Service Worker registrado con éxito:', registration.scope);
-      }).catch(function(error) {
-        console.log('Error al registrar el Service Worker:', error);
-      });
-  }
-</script>
-</body>
+    <div class="idioma-selector">
+        <button onclick="cambiarIdioma('es')">ES</button>
+        <button onclick="cambiarIdioma('en')">EN</button>
+    </div>
+    <div class="contenedor">
+        <img src="muñequita.png" alt="Muñequita" class="muñequita">
+        <h1 id="frase">Ella no responde. Ella recuerda.</h1>
+    </div>
 
+    <script src="script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw_PlataformaViva.js')
+          .then(reg => console.log('SW registrado:', reg.scope))
+          .catch(err => console.error('Error al registrar SW:', err));
+      }
+    </script>
+</body>
 </html>
